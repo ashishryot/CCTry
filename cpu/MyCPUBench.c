@@ -6,7 +6,7 @@
 #include <dirent.h>
 
 //FILL ME IN
-#define ITERATIONS 100000000000
+#define ITERATIONS 2000000000//00
 
 //Functions in this file:
 static void scan_dir(const char *dir);
@@ -33,12 +33,15 @@ void* operationSP(void *arg){
 	long long *a=(long long*)arg;
 	long long val=*a;
 	//printf("Value of arg is: %lld\n",val);
-	int aa=2000,b=10;
-	long long i;
-
+	int aa=2000,b=1000;
+	int sum;
+	//long long i=0;
+	int i=0;
 	//do SP Arithmetic Operations
 	for(i=0;i<val;i++){
-		aa=(aa*b)/b;		//	2 operations
+	//while(i<val){
+		sum=aa-b-b/aa;
+		//i++;				//	3 operations
 	}
 
 	pthread_exit(0);
@@ -49,13 +52,15 @@ void* operationDP(void *arg){
 	long long *a=(long long*)arg;
 	long long val=*a;
 	//printf("Value of arg is: %lld\n",val);
-	double sum=2000000.08542;
-	double x=9340059.0025;
-	long long i;
+	double sum;
+	double x=9340059.0025,y=998.349;
+	long long i=0;
 
 	//do DP Arithmetic Operations
 	for(i=0;i<val;i++){
-		sum=(x/sum)*sum;		//	2 Operations
+	//while(i<val){
+		sum=x/y/y*x;
+		//i++;				//	3 Operations
 	}
 
 	pthread_exit(0);
@@ -66,12 +71,16 @@ void* operationHP(void *arg){
 	long long *a=(long long*)arg;
 	long long val=*a;
 	//printf("Value of arg is: %lld\n",val);
-	short sum=100;
-	long long i;
-
+	short aa=100,b=3000;
+	short sum;
+	//long long i=0;
+	int i=0;
 	//do HP Arithmetic Operations
 	for(i=0;i<val;i++){
-		sum=sum*10/10;		//	2 operations
+	//while(i<val){
+	
+		sum=aa+b+aa+b;
+		//i++;		//	2 operations
 	}
 
 	pthread_exit(0);
@@ -82,12 +91,16 @@ void* operationQP(void *arg){
 	long long *a=(long long*)arg;
 	long long val=*a;
 	//printf("Value of arg is: %lld\n",val);
-	char c='a';
-	long long i;
-	
+	char c='a',e='f';
+	char d;
+	//long long i=0;
+	int i=0;
 	//do SP Arithmetic Operations
 	for(i=0;i<val;i++){
-		c=c*2/2;		//	2 operations
+	//while(i<val){
+	
+		d=c+e-c+e;
+		//i++;		//	9 operations
 	}
 
 	pthread_exit(0);
@@ -205,7 +218,7 @@ int main(int argc, char *argv[]) {
 /**
 	*
 	*	Below are the functions to create threads
-	*	andcalculate their running time and GLOPS
+	*	andcalculate their running time and GOPS
 	* 
 */
 
@@ -248,7 +261,7 @@ void cpuQP(int i){
 	printf("*************Time is: %f\n",time);		//Time of Execution printed
 	
 	//GOPS Calculation
-	double gflops=((ITERATIONS*2.0)/time)/1000000000.0;
+	double gflops=((ITERATIONS*8.0)/time)/1000000000.0;
 	printf("GFLOPS: %f\n",gflops);
 	
 	FILE *fp;
@@ -304,7 +317,7 @@ void cpuHP(int i){
 	printf("*************Time is: %f\n",time);		//Time of Execution printed
 	
 	//GOPS Calculation
-	double gflops=((ITERATIONS*2.0)/time)/1000000000.0;
+	double gflops=((ITERATIONS*3.0)/time)/1000000000.0;
 	printf("GFLOPS: %f\n",gflops);
 	
 	FILE *fp;
@@ -358,7 +371,7 @@ void cpuSP(int i){
 	printf("*************Time is: %f\n",time);		//Time of Execution printed
 	
 	//GOPS Calculation
-	double gflops=((ITERATIONS*2.0)/time)/1000000000.0;
+	double gflops=((ITERATIONS*3.0)/time)/1000000000.0;
 	printf("GFLOPS: %f\n",gflops);
 	
 	FILE *fp;
@@ -409,7 +422,7 @@ void cpuDP(int i){
 	printf("*************Time is: %f\n",time);		//Time of Execution printed
 	
 	//GOPS Calculation
-	double gflops=((ITERATIONS*2.0)/time)/1000000000.0;
+	double gflops=((ITERATIONS*3.0)/time)/1000000000.0;
 	printf("GFLOPS: %f\n",gflops);
 	
 	FILE *fp;
